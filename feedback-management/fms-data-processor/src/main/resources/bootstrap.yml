@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: fms-data-processor
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      password: jana123
+      username: user

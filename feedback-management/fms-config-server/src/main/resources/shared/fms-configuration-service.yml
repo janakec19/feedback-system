@@ -1,0 +1,17 @@
+security:
+  oauth2:
+    client:
+      clientId: fms-configuration-service
+      clientSecret: 12345
+      accessTokenUri: http://localhost:5000/uaa/oauth/token
+      grant-type: client_credentials
+      scope: server
+      
+server:
+  servlet:
+    context-path: /configuration
+  port: 7000
+
+feign:
+  hystrix:
+    enabled: true  

@@ -1,0 +1,49 @@
+security:
+  oauth2:
+    client:
+      clientId: fms-data-processor
+      clientSecret: 12345
+      accessTokenUri: http://localhost:5000/uaa/oauth/token
+      grant-type: client_credentials
+      scope: server
+      
+server:
+  servlet:
+    context-path: /data
+  port: 9000
+
+feign:
+  hystrix:
+    enabled: true
+
+data-input:
+      cron: 0 0/1 * * * ?
+
+event:
+  info: 
+   filepath: \workspace-capstone-project\input\OutReachEventInfo.xlsx
+  summary:
+   filepath: \workspace-capstone-project\input\OutreachEventSummary.xlsx
+  not-attended:
+   filepath: \workspace-capstone-project\input\VolunteerNotAttended.xlsx
+  unregistered:
+   filepath: \workspace-capstone-project\input\VolunteerUnregistered.xlsx
+  processed-files:
+   filepath: \workspace-capstone-project\processed\
+    
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username: dev-user
+    password: dev-password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+          ssl:
+            enable: true

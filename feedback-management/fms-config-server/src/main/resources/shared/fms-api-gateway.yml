@@ -1,0 +1,51 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+  routes:
+    fms-auth-service:
+        path: /uaa/**
+        serviceId: fms-auth-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    fms-account-service:
+        path: /accounts/**
+        serviceId: fms-account-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    fms-events-service:
+        path: /events/**
+        serviceId: fms-events-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+    fms-reports-service:
+        path: /reports/**
+        serviceId: fms-reports-service
+        stripPrefix: false
+        sensitiveHeaders:
+        
+    fms-configuration-service:
+        path: /configuration/**
+        serviceId: fms-configuration-service
+        stripPrefix: false
+        sensitiveHeaders:
+
+server:
+  port: 4000
